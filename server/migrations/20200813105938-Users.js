@@ -4,7 +4,11 @@ try {
   module.exports = {
     up: async (queryInterface, Sequelize) => {
       await queryInterface.createTable("todo", {
-        todo_id: { type: Sequelize.INTEGER },
+        todo_id: {
+          type: Sequelize.INTEGER,
+          autoIncrement: true,
+          primaryKey: true,
+        },
         description: { type: Sequelize.STRING },
       });
     },
