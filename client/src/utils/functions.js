@@ -1,3 +1,4 @@
+//laimėjimo kombinacijos
 export function findWinner(boxes) {
   const rows = [
     [0, 1, 2],
@@ -21,7 +22,7 @@ export function findWinner(boxes) {
 
   return null;
 }
-
+//Patikrinama ar visos dėžės pažymėtos
 export function areAllBoxesClicked(boxes) {
   let count = 0;
 
@@ -39,3 +40,4 @@ export function areAllBoxesClicked(boxes) {
     return false;
   }
 }
+
