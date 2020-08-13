@@ -3,10 +3,9 @@
   "main": "server.js",
   "scripts": {
     "wait-for-db": "./node_modules/.bin/wait-port db:5432",
-    "migrate": "npx sequelize db:migrate",
+    "start": "npx sequelize db:migrate && node index.js",
     "runEverything": "npm run wait-for-db && npm run migrate",
     "client-install": "cd client && npm install",
-    "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix ../client",
     "devStart": "concurrently \"npm run server\" \"npm run client\""
