@@ -19,7 +19,7 @@ export default function Data(props) {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-  });
+  },[]);
 
   return (
     <div>
