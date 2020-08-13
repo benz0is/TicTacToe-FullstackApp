@@ -6,5 +6,5 @@ COPY . /backup/server
 RUN npm install -g sequelize-cli
 EXPOSE 5000
 USER node
-ENTRYPOINT ["npm","run","migrate"]
-CMD ["node","index.js"]
+
+CMD ["npm","run","start"]
