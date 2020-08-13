@@ -23,24 +23,24 @@ export class Board extends React.Component {
       });
     } else return;
   }
-
+  //Paspaudus langelį įsijungia:
   handleBoxClick(index) {
     const boxes = this.state.boxes;
 
     let history = this.state.history;
-
+    //Patikrini ar yra laimėtojas, jei ne tęsiama
     if (utils.findWinner(boxes) || boxes[index]) {
       return;
     }
-
+    //Patikrini ar visi langeliai užimti,jei ne tęsiama
     if (utils.areAllBoxesClicked(boxes) === true) {
       return;
     }
-
+    //Susikeičia x su o
     boxes[index] = this.state.xIsNext ? "x" : "o";
     localStorage.setItem("boxes", JSON.stringify(boxes));
-
     history.push(this.state.xIsNext ? "x" : "o");
+    //Pridedami įvykiai į DB
     fetch("http://localhost:5000/todos/1", {
       method: "PUT",
       body: JSON.stringify({
@@ -59,7 +59,7 @@ export class Board extends React.Component {
       xIsNext: !this.state.xIsNext,
     });
   }
-
+  //Paspaudus mygtuką "Start new game" atsinaunija:
   handleBoardRestart = () => {
     this.setState({
       boxes: Array(9).fill(null),
@@ -186,3 +186,4 @@ export class Board extends React.Component {
     );
   }
 }
+
