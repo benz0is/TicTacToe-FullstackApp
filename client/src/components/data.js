@@ -4,18 +4,29 @@ export default function Data(props) {
   const [gameData, setGameData] = useState([]);
   var histori = [];
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch("http://localhost:5000/todos/1")
       .then((res) => res.json())
       .then((data) => setGameData(data));
-  }, []);
+  });
+  useEffect(() => {
+    fetch("http://localhost:5000/todos", {
+      method: "POST",
+      body: JSON.stringify({
+        description: "",
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  });
 
   return (
     <div>
       <h1>Console:</h1>
       <div>
-        {gameData.rows !== undefined
+        {gameData.description !== undefined
           ? // eslint-disable-next-line
-            Object.values(gameData.rows[0].description).map((i) => {
+            Object.values(gameData.description).map((i) => {
               if (i === "x" || i === "o") {
                 histori.push(i);
               }
@@ -23,7 +34,7 @@ export default function Data(props) {
           : console.log("neveikia")}
       </div>
       <ul>
-        {gameData.rows !== undefined
+        {gameData.description !== undefined
           ? histori.map((result) => <li>{result} moved</li>)
           : console.log("neveikia")}
       </ul>
